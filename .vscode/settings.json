@@ -62,6 +62,7 @@
     "prototype.h": "c",
     "adxl345.h": "c",
     "address_map_arm.h": "c",
-    "stddef.h": "c"
+    "stddef.h": "c",
+    "mapa_endereco.h": "c"
   }
 }
