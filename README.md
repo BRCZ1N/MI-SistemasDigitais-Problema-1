@@ -261,8 +261,22 @@ Para atender aos requisitos e simplificar o processo de compilação e execuçã
 <h2>Como usar</h2>
 <div align="justify">
 
-1. **Compilar o Projeto**: Para compilar o projeto, abra o terminal na pasta do projeto que deve ser alocado na DE1-Soc e execute o comando:
-   make
+Para iniciar o projeto, siga os passos abaixo para obter o código-fonte, compilar o código em C e executa-lo em um dispositivo FPGA DE1-SoC. 
+
+**Passo 1: Clonar o Repositório**
+
+Abra o terminal e execute o seguinte comando para obter o código do repositório:
+
+    git clone https://github.com/Oguelo/MI-SistemasDigitais-Problema-1.git
+
+**Passo 2: Acessar o Diretório e Compilar o Código em C**
+
+    cd MI-SistemasDigitais-Problema-1\Modulos
+
+Compile e execute o código usando o comando:
+
+    make 
+
 
 
 <div id="conclusao"> 
