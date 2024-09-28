@@ -252,10 +252,10 @@ Seguindo a linha de aprendizado dos tutoriais do site FPGAcademy, usamos alguns 
 A comunicação com o ADXL345 é feita por meio do barramento I2C. No DE1-SoC, os fios de comunicação I2C do ADXL345 estão conectados ao HPS (Hard Processor System) do chip Cyclone V. Através do Pin Multiplexer, os sinais podem ser rooteados para o controlador I2C0, que será utilizado para acessar os registros internos do ADXL345
 
 <div display= "flex" justify-content= "center" align="center">
-  <img src="Imagens/7.png" alt="Figure 2. The Pin Mux block in more detail.">
+  <img src="Imagens/7.png" alt="Figure 2. The Pin Mux block in more detail." style="width: 800px">
   <p> Conexão I2C do ADXL345 com o chip Cyclone V SoC em placas da série DE. </p>
   
-  <img src="Imagens/8.png" alt="Figure 1. The ADXL345’s I2C connection to the Cyclone V SoC chip on DE-Series boards">
+  <img src="Imagens/8.png" alt="Figure 1. The ADXL345’s I2C connection to the Cyclone V SoC chip on DE-Series boards" style="width: 800px">
   <p> O bloco Pin Mux em mais detalhes. </p>
 </div>
 
@@ -273,7 +273,7 @@ void Configurar_mux(){
 
 <div display= "flex" justify-content= "center" align="center">
   <a href="https://blogs.vmware.com/vsphere/2020/03/how-is-virtual-memory-translated-to-physical-memory.html">
-      <img src="https://blogs.vmware.com/vsphere/files/2020/03/tlb-example1c-hit.png" alt="Exemplo diagrama de mapeamento de memoria">
+      <img src="https://blogs.vmware.com/vsphere/files/2020/03/tlb-example1c-hit.png" alt="Exemplo diagrama de mapeamento de memoria" style="width: 800px">
   </a>
   <p> Mapeamento de memória </p>
 </div>
@@ -295,7 +295,8 @@ o acesso direto à memória física. Após o mapeamento, devemos o endereço vir
 A interface gráfica exibe a pontuação(Score), a maior pontuação(High Score) e o tabuleiro, que apresenta duas barras laterais e uma inferior.
 
 <div display= "flex" justify-content= "center" align="center">
-    <img src="Imagens/interface_usuario.jpeg" alt="Figure 3. Interface de usuário.">
+   <img src="Imagens/10.png" alt="Interface do jogo. Interface de usuário."">
+<p>Interface do jogo.</p>
 </div>
 
 ## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
