@@ -284,9 +284,10 @@ o acesso direto à memória física. Após o mapeamento, devemos o endereço vir
 
 A interface gráfica exibe a pontuação(Score), a maior pontuação(High Score) e o tabuleiro, que apresenta duas barras laterais e uma inferior.
 
-<div style="text-align: center;">
-    <img src="Imagens/interface_usuario.jpeg" alt="Figure 3. Interface de usuário." style="display: block; margin: auto;">
+<div style="display: flex; justify-content: center;">
+    <img src="Imagens/interface_usuario.jpeg" alt="Figure 3. Interface de usuário.">
 </div>
+
 
 
 ## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
@@ -333,7 +334,7 @@ Este algoritmo é responsável por criar novas peças (tetrominos) que aparecer�
 
 Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro foram completamente preenchidas por blocos após a fixação de uma peça. Quando uma linha é completamente preenchida, ela é removida do tabuleiro, e todas as linhas superiores são deslocadas para baixo, liberando espaço para novas peças.A lógica do algoritmo baseia-se em percorrer cada linha do tabuleiro e verificar se todas as células daquela linha estão ocupadas por blocos. Quando uma linha completa é detectada, o algoritmo a remove, esvaziando-a, e depois desloca todas as linhas acima dela para baixo, além disso a linha removida existe o incremento da pontuação do jogador. Esse processo é repetido até que todas as linhas completas tenham sido removidas. O objetivo é liberar espaço e aumentar a pontuação do jogador, tornando o jogo mais desafiador à medida que o campo de jogo se enche novamente.
 
-<div id="Funcionamento"> 
+<div id="Testes de Funcionamento"> 
 <h2> Funcionamento do jogo</h2>
 <div align="justify">
 
