@@ -188,6 +188,97 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 
 <div id="Acelerometro"> 
 <h2>Acelerometro</h2>
+
+<h3>Visão Geral do ADXL345 </h3>
+
+O acelerômetro ADXL345 fornece dados de aceleração para três eixos: X, Y e Z, fabricado pela Analog Devices Corporation. Ele possui vários registros configuráveis que permitem ajustar o formato dos dados, taxa de amostragem, modos de energia, entre outros
+
+<h3>Registradores usados </h3>
+
+Seguindo a linha de aprendizado dos tutoriais do site FPGAcademy, usamos alguns registradores para comunicar, configurar, controlar e ler o sensor.
+
+<h3>Registradores do Controlador I2C0</h3>
+
+<ul>
+  <li><code>I2C0_BASE</code>: Base de memória para o controlador I2C0. Usado como referência para acessar outros registradores.</li>
+  <li><code>I2C0_CON</code>: Registrador de Controle. Controla o modo de operação do controlador I2C, como modo mestre/escravo e a velocidade (rápido/lento).</li>
+  <li><code>I2C0_TAR</code>: Registrador de Endereço de Destino. Define o endereço do dispositivo escravo I2C com o qual o controlador mestre I2C0 se comunica (ex. ADXL345).</li>
+  <li><code>I2C0_DATA_CMD</code>: Registrador de Dados e Comando. Usado para transmitir e receber dados do barramento I2C. Também pode enviar comandos como leitura/escrita.</li>
+  <li><code>I2C0_FS_SCL_HCNT</code>: Registrador de Contagem Alta do SCL (Fast Mode). Define o número de ciclos de clock que o sinal SCL deve permanecer alto na comunicação I2C em modo rápido (400 kbit/s).</li>
+  <li><code>I2C0_FS_SCL_LCNT</code>: Registrador de Contagem Baixa do SCL (Fast Mode). Define o número de ciclos de clock que o sinal SCL deve permanecer baixo na comunicação I2C em modo rápido.</li>
+  <li><code>I2C0_ENABLE</code>: Registrador de Habilitação do Controlador I2C. Controla se o controlador I2C está habilitado (ativo) ou desabilitado.</li>
+  <li><code>I2C0_RXFLR</code>: Registrador de Nível de FIFO de Recepção. Indica quantos dados estão prontos no buffer FIFO de recepção, aguardando para serem lidos.</li>
+  <li><code>I2C0_ENABLE_STATUS</code>: Registrador de Status de Habilitação. Mostra se o controlador I2C está habilitado e pronto para uso.</li>
+  <li><code>I2C0_SPAN</code>: Intervalo de endereços mapeados usados pelo controlador I2C0.</li>
+</ul>
+
+<h3>Registradores de Multiplexação de Pinos (SYSMGR): </h3>
+
+<ul>
+  <li><code>SYSMGR_GENERALIO7</code>: Configura o pino 7 para conectar o sinal do periférico I2C0.SDA (linha de dados do I2C). Configurado como 1.</li>
+  <li><code>SYSMGR_GENERALIO8</code>: Configura o pino 8 para conectar o sinal do periférico I2C0.SCL (linha de clock do I2C). Também configurado como 1.</li>
+  <li><code>SYSMGR_I2C0USEFPGA</code>: Define se os sinais I2C0 (SDA e SCL) serão roteados para o HPS (0) ou para o FPGA (1). Configurado como 0, assim controlando o mux para conexão I2C.</li>
+  <li><code>SYSMGR_BASE</code>: Base de memória do Gerenciador do Sistema. Usada como referência para acessar os registradores de configuração do sistema.</li>
+  <li><code>SYSMGR_SPAN</code>: Intervalo de endereços usados pelos registradores de multiplexação de pinos.</li>
+</ul>
+
+<h3>Lista de Registradores do ADXL345: </h3>
+
+<ul>
+  <li><code>ADXL345_REG_DATA_FORMAT</code>: Controla o formato dos dados e o alcance da medição do acelerômetro (ex. ±2g, ±4g, ±8g, ±16g) e a resolução (completa ou 10 bits). Configurada na faixa de ±16g, ou seja, resolução total.</li>
+  <li><code>XL345_DATAREADY</code>: Bit que indica se os dados estão prontos para serem lidos. Está no registrador de interrupção.</li>
+  <li><code>XL345_RANGE_16G</code>: Configura o acelerômetro para operar no modo de ±16g.</li>
+  <li><code>ADXL345_REG_THRESH_ACT</code>: Define o valor limite para detecção de atividade em termos de aceleração (utilizado para interrupções de detecção de movimento).</li>
+  <li><code>XL345_FULL_RESOLUTION</code>: Ativa o modo de resolução total, onde a menor unidade de aceleração representada é 3,9 mg.</li>
+  <li><code>ADXL345_REG_BW_RATE</code>: Controla a taxa de amostragem e o modo de energia. Por exemplo, a configuração <code>XL345_RATE_200</code> define uma taxa de 200 Hz.</li>
+  <li><code>XL345_RATE_200</code>: Configura a taxa de amostragem do ADXL345 para 200 Hz.</li>
+  <li><code>ADXL345_REG_THRESH_INACT</code>: Define o valor limite para detecção de inatividade (usado para interrupções de detecção de inatividade).</li>
+  <li><code>ADXL345_REG_TIME_INACT</code>: Define o tempo que a aceleração precisa estar abaixo do limite de inatividade para que a inatividade seja detectada.</li>
+  <li><code>ADXL345_REG_ACT_INACT_CTL</code>: Controla a detecção de atividade e inatividade para os eixos X, Y e Z.</li>
+  <li><code>ADXL345_REG_INT_ENABLE</code>: Controla quais interrupções estão habilitadas. Pode habilitar interrupções para detecção de atividade, inatividade, queda livre, etc.</li>
+  <li><code>XL345_INACTIVITY</code>: Bit que habilita a interrupção de inatividade.</li>
+  <li><code>XL345_ACTIVITY</code>: Bit que habilita a interrupção de atividade.</li>
+  <li><code>ADXL345_REG_POWER_CTL</code>: Controla o estado de energia do ADXL345, como ativar/desativar medições de aceleração.</li>
+  <li><code>XL345_STANDBY</code>: Coloca o ADXL345 em modo de espera (standby) para economizar energia.</li>
+  <li><code>XL345_MEASURE</code>: Ativa o modo de medição, permitindo que o ADXL345 comece a medir aceleração.</li>
+  <li><code>ADXL345_REG_OFSX</code>: Configura o ajuste de compensação no eixo X.</li>
+  <li><code>XL345_RATE_100</code>: Configura a taxa de amostragem para 100 Hz.</li>
+  <li><code>ADXL345_REG_INT_SOURCE</code>: Indica a origem das interrupções (por exemplo, quando novos dados estão disponíveis ou quando uma atividade/inatividade foi detectada).</li>
+  <li><code>ADXL345_REG_DATAX0</code> e <code>ADXL345_REG_DATAX1</code>: Registradores de leitura dos dados de aceleração para o eixo X (o dado é armazenado em dois registradores para formar um valor de 16 bits).</li>
+</ul>
+
+
+<h3>Comunicação com o ADXL345 </h3>
+
+A comunicação com o ADXL345 é feita por meio do barramento I2C. No DE1-SoC, os fios de comunicação I2C do ADXL345 estão conectados ao HPS (Hard Processor System) do chip Cyclone V. Através do Pin Multiplexer, os sinais podem ser rooteados para o controlador I2C0, que será utilizado para acessar os registros internos do ADXL345
+
+<h3>Mapeamento Virtual de Memória </h3>
+
+Para que o programa em C possa acessar os registradores do ADXL345 no ambiente Linux, é necessário mapear os endereços de memória física para endereços virtuais, permitindo o uso de ponteiros no espaço de usuário.
+Configuração do I2C e Pin Multiplexer
+Antes de iniciar a comunicação com o ADXL345, é necessário configurar o Pin Multiplexer para rotear os sinais I2C corretamente. A configuração é feita escrevendo nos registradores do Pin Mux:
+
+<pre><code>
+void Configurar_mux(){
+    *(ponteiro_gerenciador + SYSMGR_I2C0USEFPGA) = 0;
+    *(ponteiro_gerenciador + SYSMGR_GENERALIO7) = 1;
+    *(ponteiro_gerenciador + SYSMGR_GENERALIO8) = 1;
+}</code></pre>
+
+<a href="https://blogs.vmware.com/vsphere/2020/03/how-is-virtual-memory-translated-to-physical-memory.html">
+    <img src="https://blogs.vmware.com/vsphere/files/2020/03/tlb-example1c-hit.png" alt="Exemplo diagrama de mapeamento de memoria">
+</a>
+
+Além disso, o controlador I2C0 precisa ser configurado para operar no modo mestre e com o endereço correto do ADXL345 Leitura e Escrita dos Registros do ADXL345
+Após a configuração do I2C, podemos ler e escrever nos registradores do ADXL345 usando os registradores de comando e dados do controlador I2C.
+<img src="./images/8.png" alt="Texto Alternativo">
+<img src="./images/7.png" alt="Texto Alternativo">
+
+<h3>Resumo da construção </h3>
+Para criar a biblioteca foi usado esses registradores citados, além de usar a função mmap da biblioteca sys/mman para mapear a memória física e criar um endereço virtual.
+O primeiro passo é mapear a memória física para o espaço de endereçamento virtual, pois tentar acessá-la diretamente causará um erro de segmentação, já que o sistema não permite 
+o acesso direto à memória física. Após o mapeamento, devemos o endereço virtual resultante para configurar a conexão do mux. Logo depois inicializamos os registradores, configuramos e fazemos uma calibragem, se tudo certo, podemos ler os dados.
+
 <div align="justify">
 
 ## Interface do Usuário <a name="Interface-Grafica"></a>
