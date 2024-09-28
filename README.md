@@ -284,7 +284,9 @@ o acesso direto à memória física. Após o mapeamento, devemos o endereço vir
 
 A interface gráfica exibe a pontuação(Score), a maior pontuação(High Score) e o tabuleiro, que apresenta duas barras laterais e uma inferior.
 
-<img src="Imagens/interface_usuario.jpeg" alt="Figure 3. Interface de usuário.">
+<div style="text-align: center;">
+    <img src="Imagens/interface_usuario.jpeg" alt="Figure 3. Interface de usuário.">
+</div>
 
 ## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
 
