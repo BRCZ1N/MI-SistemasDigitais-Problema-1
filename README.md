@@ -251,13 +251,13 @@ Seguindo a linha de aprendizado dos tutoriais do site FPGAcademy, usamos alguns 
 <h3>Comunicação com o ADXL345 </h3>
 
 A comunicação com o ADXL345 é feita por meio do barramento I2C. No DE1-SoC, os fios de comunicação I2C do ADXL345 estão conectados ao HPS (Hard Processor System) do chip Cyclone V. Através do Pin Multiplexer, os sinais podem ser rooteados para o controlador I2C0, que será utilizado para acessar os registros internos do ADXL345
-
+<img src="Imagens/8.png" alt="Figure 1. The ADXL345’s I2C connection to the Cyclone V SoC chip on DE-Series boards">
+<img src="Imagens/7.png" alt="Figure 2. The Pin Mux block in more detail.">
 <h3>Mapeamento Virtual de Memória </h3>
 
 Para que o programa em C possa acessar os registradores do ADXL345 no ambiente Linux, é necessário mapear os endereços de memória física para endereços virtuais, permitindo o uso de ponteiros no espaço de usuário.
 Configuração do I2C e Pin Multiplexer
 Antes de iniciar a comunicação com o ADXL345, é necessário configurar o Pin Multiplexer para rotear os sinais I2C corretamente. A configuração é feita escrevendo nos registradores do Pin Mux:
-
 <pre><code>
 void Configurar_mux(){
     *(ponteiro_gerenciador + SYSMGR_I2C0USEFPGA) = 0;
@@ -271,8 +271,7 @@ void Configurar_mux(){
 
 Além disso, o controlador I2C0 precisa ser configurado para operar no modo mestre e com o endereço correto do ADXL345 Leitura e Escrita dos Registros do ADXL345
 Após a configuração do I2C, podemos ler e escrever nos registradores do ADXL345 usando os registradores de comando e dados do controlador I2C.
-<img src="./images/8.png" alt="Texto Alternativo">
-<img src="./images/7.png" alt="Texto Alternativo">
+
 
 <h3>Resumo da construção </h3>
 Para criar a biblioteca foi usado esses registradores citados, além de usar a função mmap da biblioteca sys/mman para mapear a memória física e criar um endereço virtual.
