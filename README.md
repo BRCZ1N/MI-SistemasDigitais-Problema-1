@@ -186,7 +186,7 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 
 
 <div id="Acelerometro"> 
-<h2>Acelerometro</h2>
+<h2>Acelerômetro</h2>
 
 <h3>Visão Geral do ADXL345 </h3>
 
