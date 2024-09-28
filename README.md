@@ -1,11 +1,12 @@
-<h1 align="center"> 🟦🟪🟨🟥🟧 TETRIS 🟧🟥🟨🟪🟦
+<h1 align="center"> 🟦🟪🟨🟥🟧<a padding="0" href="https://git.io/typing-svg">
+        <img src="https://readme-typing-svg.herokuapp.com?font=Consolas&weight=900&size=36&duration=3000&pause=500&color=FFFFFF&center=true&vCenter=true&width=222&height=36&lines=Tetris+Game" alt="Typing SVG" /></a> 
+  🟦🟪🟨🟥🟧
 </h1>
 
+<h3 align="justify">Jogo inspirado no clássico Tetris, desenvolvido para o kit de desenvolvimento DE1-SoC utilizando linguagem C </h3>
 
-<h3 align="center"> Jogo inspirado no clássico Tetris, desenvolvido para o kit de desenvolvimento DE1-SoC utilizando linguagem C </h3>
 
-<div align="justify"> 
-<div id="sobre-o-projeto"> 
+<div align="justify" id="sobre-o-projeto"> 
 <h2> Sobre o Projeto</h2>
 
 Tetris é um clássico jogo de quebra-cabeça criado em 1984 pelo programador russo Alexey Pajitnov. Tedo como objetivo do jogo encaixar peças de diferentes formatos, chamadas "tetraminós", em uma matriz vertical. Tendo as opções de girar e posicionar as peças que caem para formar linhas horizontais completas. Quando uma linha é preenchida, ela é eliminada, e o jogador ganha pontos. O jogo termina quando as peças se acumulam e atingem o topo da tela. Tetris é amplamente reconhecido por sua simplicidade, desafio crescente e apelo universal, permanecendo popular até os dias de hoje.
@@ -19,8 +20,6 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
 * Os botões devem ser utilizados para executar comandos no jogo;
 * Os dados de imagem devem ser transmitidos de um cabo VGA para um monitor CRT.
 
-</div>
-
 <h2>  Equipe: <br></h2>
 <uL> 
   <li><a href="https://github.com/Oguelo">Alex da Fonseca Dantas Junior</a></li>
@@ -28,6 +27,8 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
   <li><a href="https://github.com/duasck">Luis Eduardo Leite Azevedo</a></li>
  
 </ul>
+</div>
+
 
 <h1 align="center"> Sumário </h1>
 <div id="sumario">
@@ -43,15 +44,13 @@ Os requisitos para elaboração do sistema são apresentados a seguir:
         <li><a href="#execucao"> Como Usar </a></li>
          <li><a href="#makefile">Makefile</a></li>  
         <li><a href="#conclusao">Conclusão</a></li>
-       
-    
+        <li><a href="#referencia">Referências</a></li>
   </ul>
 </div>
 
 
-<div id="equipamentos"> 
+<div align="justify" id="equipamentos"> 
 <h2> Descrição dos Equipamentos e Software Utilizados</h2>
-<div align="justify"> 
 
 Nesta seção, são apresentados os equipamentos e software utilizados durante o desenvolvimento do projeto.
 
@@ -113,11 +112,10 @@ Abaixo estão dados detalhados sobre o monitor usado:
 |    **Resolução do Display**    | 1024 x 768 pixels |
 
 </div>
-</div>
 
-<div id="arq_CPU">
+
+<div align="justify" id="arq_CPU">
 <h2> Estrutura da Placa DE1-SoC </h2>
-<div align="justify">
 
 Nesta parte, será detalhada a arquitetura da placa DE1-SoC, incluindo o processador ARM Cortex-A9, a organização dos registradores, o mapeamento dos dispositivos de entrada/saída na memória, o uso da memória, a comunicação entre o processador e o FPGA, além do processo de compilação nativa diretamente na placa.
 
@@ -158,12 +156,11 @@ A interface JTAG estabelece a comunicação entre a placa DE1-SoC e o computador
 A compilação nativa ocorre quando o código é compilado no mesmo sistema em que será executado. Aqui, a compilação será realizada diretamente na placa, utilizando a linha de comando do Linux e as ferramentas de compilação integradas. O comando `gcc` invoca o GNU C Compiler, um compilador de código aberto muito usado para gerar executáveis no Linux.
 
 </div>
-</div>
 
 
-<div id="Drives"> 
+<div align="justify" id="Drives"> 
 <h2> Drives de Dispositivos de Entrada e Saída</h2>
-<div align="justify"> 
+
 # Drivers de Dispositivos de Entrada e Saída (E/S)
 
 Para realizar a comunicação com os dispositivos periféricos de hardware, este projeto utiliza drivers, que são módulos de software responsáveis por fornecer a interface de controle sobre esses dispositivos. Abaixo estão descritos os módulos e funções de cada driver utilizado.
@@ -185,6 +182,8 @@ O módulo identificado como `KEYS` é responsável pela leitura dos botões da p
 - `KEY_open`: Abre o dispositivo responsável pelos botões.
 - `KEY_read`: Lê o estado dos botões e atualiza o endereço de memória fornecido. A leitura indica se os botões foram pressionados desde a última verificação, sendo necessário limpar os dados antes de iniciar novas interações.
 - `KEY_close`: Fecha o dispositivo de botões, liberando os recursos alocados para ele durante a execução.
+</div>
+
 
 <div id="Acelerometro"> 
 <h2>Acelerometro</h2>
@@ -251,8 +250,15 @@ Seguindo a linha de aprendizado dos tutoriais do site FPGAcademy, usamos alguns 
 <h3>Comunicação com o ADXL345 </h3>
 
 A comunicação com o ADXL345 é feita por meio do barramento I2C. No DE1-SoC, os fios de comunicação I2C do ADXL345 estão conectados ao HPS (Hard Processor System) do chip Cyclone V. Através do Pin Multiplexer, os sinais podem ser rooteados para o controlador I2C0, que será utilizado para acessar os registros internos do ADXL345
-<img src="Imagens/8.png" alt="Figure 1. The ADXL345’s I2C connection to the Cyclone V SoC chip on DE-Series boards">
-<img src="Imagens/7.png" alt="Figure 2. The Pin Mux block in more detail.">
+
+<div display= "flex" justify-content= "center" align="center">
+  <img src="Imagens/7.png" alt="Figure 2. The Pin Mux block in more detail.">
+  <p> Conexão I2C do ADXL345 com o chip Cyclone V SoC em placas da série DE. </p>
+  
+  <img src="Imagens/8.png" alt="Figure 1. The ADXL345’s I2C connection to the Cyclone V SoC chip on DE-Series boards">
+  <p> O bloco Pin Mux em mais detalhes. </p>
+</div>
+
 <h3>Mapeamento Virtual de Memória </h3>
 
 Para que o programa em C possa acessar os registradores do ADXL345 no ambiente Linux, é necessário mapear os endereços de memória física para endereços virtuais, permitindo o uso de ponteiros no espaço de usuário.
@@ -265,30 +271,32 @@ void Configurar_mux(){
     *(ponteiro_gerenciador + SYSMGR_GENERALIO8) = 1;
 }</code></pre>
 
-<a href="https://blogs.vmware.com/vsphere/2020/03/how-is-virtual-memory-translated-to-physical-memory.html">
-    <img src="https://blogs.vmware.com/vsphere/files/2020/03/tlb-example1c-hit.png" alt="Exemplo diagrama de mapeamento de memoria">
-</a>
+<div display= "flex" justify-content= "center" align="center">
+  <a href="https://blogs.vmware.com/vsphere/2020/03/how-is-virtual-memory-translated-to-physical-memory.html">
+      <img src="https://blogs.vmware.com/vsphere/files/2020/03/tlb-example1c-hit.png" alt="Exemplo diagrama de mapeamento de memoria">
+  </a>
+  <p> Mapeamento de memória </p>
+</div>
 
 Além disso, o controlador I2C0 precisa ser configurado para operar no modo mestre e com o endereço correto do ADXL345 Leitura e Escrita dos Registros do ADXL345
 Após a configuração do I2C, podemos ler e escrever nos registradores do ADXL345 usando os registradores de comando e dados do controlador I2C.
-
 
 <h3>Resumo da construção </h3>
 Para criar a biblioteca foi usado esses registradores citados, além de usar a função mmap da biblioteca sys/mman para mapear a memória física e criar um endereço virtual.
 O primeiro passo é mapear a memória física para o espaço de endereçamento virtual, pois tentar acessá-la diretamente causará um erro de segmentação, já que o sistema não permite 
 o acesso direto à memória física. Após o mapeamento, devemos o endereço virtual resultante para configurar a conexão do mux. Logo depois inicializamos os registradores, configuramos e fazemos uma calibragem, se tudo certo, podemos ler os dados.
+</div>
 
-<div align="justify">
+
+<div align="justify" id="Interface-Grafica" >
 
 ## Interface do Usuário <a name="Interface-Grafica"></a>
 
 A interface gráfica exibe a pontuação(Score), a maior pontuação(High Score) e o tabuleiro, que apresenta duas barras laterais e uma inferior.
 
-<div style="display: flex; justify-content: center;">
+<div display= "flex" justify-content= "center" align="center">
     <img src="Imagens/interface_usuario.jpeg" alt="Figure 3. Interface de usuário.">
 </div>
-
-
 
 ## Dinâmica e Regras de Jogo <a name="Regras-de-jogo"></a>
 
@@ -314,36 +322,57 @@ O jogo termina quando as peças acumulam-se até o topo do tabuleiro.
 - **Tetromino I**: Linha reta, cor ciano.
 
 </div>
-<div id="Algoritmos"> 
-<h2> Algoritmos de Jogo </h2>
-<div align="justify">
 
-<h3>Algoritmo de detecção de colisão</h3>
+
+<div align="justify" id="Algoritmos"> 
+  <h2> Algoritmos de Jogo </h2>
+
+  <h3>Algoritmo de detecção de colisão</h3>
 
 Este algoritmo permite que as peças reconheçam quando colidem com o fundo do tabuleiro, outras peças ou a lateral do tabuleiro. Como cada parte de uma peça é um ponto numa matriz, foi desenvolvido um algoritmo de detecção de colisão entre peças e o tabuleiro. A lógica do algoritmo baseia-se em verificar a posição de cada bloco da peça atual e comparar com o estado do tabuleiro. Quando uma peça tenta mover-se para uma nova posição, o algoritmo checa se essa posição já está ocupada por outro bloco ou se ultrapassa os limites do tabuleiro. Se uma colisão é detectada, o movimento da peça é interrompido, e ela é fixada em sua posição final no tabuleiro.
 
-<h3>Algoritmo de movimentação de peça</h3>
+  <h3>Algoritmo de movimentação de peça</h3>
 
 Este algoritmo é responsável por gerenciar o movimento da peça atual dentro do tabuleiro. A peça se move automaticamente para baixo a cada ciclo de atualização do jogo, e o jogador pode controlar a peça lateralmente via acelerômetro. Para isso, o algoritmo precisa verificar se os movimentos solicitados são válidos, sem ultrapassar os limites do tabuleiro ou colidir com outras peças. A lógica do algoritmo baseia-se em aplicar o movimento solicitado pela peça, seja para a esquerda ou direita, sendo esse direcionamento de deslocamento influenciado pela coordenada fornecida pelo acelerômetro. Antes de realizar o movimento, o algoritmo utiliza o algoritmo de detecção de colisão para garantir que a nova posição não esteja ocupada por outro bloco ou fora dos limites do tabuleiro. Se o movimento for permitido, a peça é deslocada; caso contrário, o movimento é bloqueado. Quando a peça atinge o fundo do tabuleiro ou colide com outra peça, ela é fixada no local, e uma nova peça é gerada no topo do tabuleiro.
 
-<h3>Algoritmo de geração de peças</h3>
+  <h3>Algoritmo de geração de peças</h3>
 
 Este algoritmo é responsável por criar novas peças (tetrominos) que aparecerão no topo do tabuleiro assim que a peça anterior for fixada. As peças são geradas aleatoriamente a partir de um conjunto pré-definido de formas, e cada nova peça começa sua trajetória no topo do tabuleiro, descendo automaticamente. A lógica do algoritmo baseia-se na geração aleatória de uma peça a partir de um conjunto de tetrominos. Após a fixação de uma peça no tabuleiro, o algoritmo seleciona a próxima peça e a posiciona na parte superior central do tabuleiro. A peça começa a descer automaticamente, e o processo de movimentação e detecção de colisão se repete até que a peça seja fixada ou o jogo termine, caso o tabuleiro esteja cheio.
 
-<h3>Algoritmo de remoção de linhas completas</h3>
+  <h3>Algoritmo de remoção de linhas completas</h3>
 
 Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro foram completamente preenchidas por blocos após a fixação de uma peça. Quando uma linha é completamente preenchida, ela é removida do tabuleiro, e todas as linhas superiores são deslocadas para baixo, liberando espaço para novas peças.A lógica do algoritmo baseia-se em percorrer cada linha do tabuleiro e verificar se todas as células daquela linha estão ocupadas por blocos. Quando uma linha completa é detectada, o algoritmo a remove, esvaziando-a, e depois desloca todas as linhas acima dela para baixo, além disso a linha removida existe o incremento da pontuação do jogador. Esse processo é repetido até que todas as linhas completas tenham sido removidas. O objetivo é liberar espaço e aumentar a pontuação do jogador, tornando o jogo mais desafiador à medida que o campo de jogo se enche novamente.
+</div>
 
-<div id="Testes de Funcionamento"> 
+
+<div div align="justify" id="Funcionamento"> 
 <h2> Funcionamento do jogo</h2>
-<div align="justify">
+<div display= "flex" justify-content= "center" align="center"> 
+  
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center;">
+    <img src="Imagens/1.gif" alt="Tela do jogo." />
+    <p>Tela do jogo.</p>
+</div>
+
+ <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center;">
+    <img src="Imagens/5.gif" alt="Como controlar o jogo." />
+    <p>Como controlar o jogo.</p>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center;">
+    <img src="Imagens/6.gif" alt="Demonstração da jogabilidade do jogo." />
+    <p>Demonstração da jogabilidade do jogo.</p>
+</div>
+
+</div>
+
+Para controlar as peças, o jogador deve inclinar a placa no eixo horizontal, o que permite mover as peças para a esquerda ou para a direita. Além disso, o jogo possui uma função de pausa: para pausar, o jogador deve pressionar o botão 1 na placa.
+Se as peças alcançarem o topo da tela, o jogo termina e reinicia. Caso a pontuação do jogador seja superior à maior pontuação registrada, ela será definida como o novo high score.
+</div>
 
 
-
-<div id="makefile"> 
+<div align="justify" id="makefile"> 
 <h2>Makefile</h2>
-<div align="justify">
-
 
 Para atender aos requisitos e simplificar o processo de compilação e execução do programa em C, foi criado um `Makefile`. Este arquivo serve como uma ferramenta que automatiza a construção do projeto, facilitando o gerenciamento do processo de compilação. O `Makefile` executa as seguintes operações:
 
@@ -352,10 +381,12 @@ Para atender aos requisitos e simplificar o processo de compilação e execuçã
 - **Limpeza**: Remove arquivos temporários e o executável gerado.
 - **Execução**: Permite iniciar o programa compilado.
 
+</div>
 
-<div id="execucao"> 
+
+<div  align="justify" id="execucao"> 
 <h2>Como usar</h2>
-<div align="justify">
+
 
 Para iniciar o projeto, siga os passos abaixo para obter o código-fonte, compilar o código em C e executa-lo em um dispositivo FPGA DE1-SoC. 
 
@@ -373,11 +404,22 @@ Compile e execute o código usando o comando:
 
     make 
 
+</div>
 
-
-<div id="conclusao"> 
+<div div align="justify" id="conclusao"> 
 <h2> Conclusão</h2>
-<div align="justify">
+
 O desenvolvimento deste projeto de Tetris para a placa DE1-SoC, utilizando linguagem C, demonstrou a versatilidade e o poder de integração entre hardware e software oferecidos por essa plataforma. Ao implementar o jogo, foi possível explorar a interface gráfica transmitida via VGA, o controle responsivo utilizando um acelerômetro e botões, além da manipulação de memória e dispositivos de entrada/saída diretamente no hardware. Entretanto, não foi possível implementar recursos, tais como, rotação de tetrominos e aumento de nível com base na pontuação, esses recursos gerariam ainda mais diversidade e são possíveis de serem feitos com esse projeto base.
 O projeto proporcionou uma oportunidade  de combinar conceitos de sistemas embarcados, como controle de periféricos, algoritmos de movimentação e colisão, e lógica de geração e remoção de peças, em uma aplicação prática e divertida. A utilização da DE1-SoC permitiu expandir o conhecimento sobre FPGAs, além de aprimorar as habilidades de programação em C para sistemas com recursos limitados.
- <li><a href="#sumario">Voltar para o inicio</a></li>
+<li><a href="#sumario">Voltar para o inicio</a></li>
+ 
+</div>
+
+<div id="referencia"> 
+<h2> Referências</h2>
+<ul>
+<li><a href="https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/Computer_Systems/DE1-SoC/DE1-SoC_Computer_ARM.pdf">DE1-SoC Computer System with ARM* Cortex* A9 </a> - Acesso em 26 set. 2024. </li>
+<li><a href="https://blogs.vmware.com/vsphere/2020/03/how-is-virtual-memory-translated-to-physical-memory.html"> NIELS HAGOORT. How is Virtual Memory Translated to Physical Memory? VMware vSphere Blog. </a> - Acesso em: 20 set. 2024.</li>
+<li><a href="https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/17.0/Tutorials/Linux_On_DE_Series_Boards.pdf" > Using Linux* on DE-series Boards </a> - Acesso em 24 set 2024.</li>
+‌</ul>
+</div>
