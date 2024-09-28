@@ -364,6 +364,11 @@ Esse algoritmo é responsável por verificar se uma ou mais linhas do tabuleiro 
     <p>Demonstração da jogabilidade do jogo.</p>
 </div>
 
+<div display= "flex" justify-content= "center" align="center">
+        <img src="Imagens/9.png" alt="Localização do botão na placa." />
+        <p>Localização do botão na placa.</p>
+</div>
+
 </div>
 
 Para controlar as peças, o jogador deve inclinar a placa no eixo horizontal, o que permite mover as peças para a esquerda ou para a direita. Além disso, o jogo possui uma função de pausa: para pausar, o jogador deve pressionar o botão 1 na placa.
